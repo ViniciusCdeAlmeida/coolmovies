@@ -36,6 +36,7 @@ dependencies:
   riverpod: ^2.3.7
   flutter_dotenv: ^5.0.2
   equatable: ^2.0.5
+  faker: any
 
 
   # The following adds the Cupertino Icons font to your application.

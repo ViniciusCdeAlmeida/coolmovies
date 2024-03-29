@@ -1,14 +1,38 @@
 class MovieQueries {
   static String getMovies() => '''
+  query {
+    allMovies {
+      nodes {
+        id
+        title
+      }
+    }
+  }
       ''';
 
   static String getUsers() => '''
+  query {
+    allUsers {
+      nodes {
+        id
+        name
+        nodeId
+      }
+    }
       ''';
 
   static String getMovieDetails({
     required String id,
   }) =>
       '''
+  query {
+    movieById(id: $id) {
+      imgUrl
+      id
+      releaseDate
+      title
+    }
+  }
       ''';
 
   static String addMovieReviews({
@@ -19,5 +43,20 @@ class MovieQueries {
     String body = '',
   }) =>
       '''
+  mutation {
+    createMovieReview(
+      input: {
+        movieReview: {
+        title: $title,
+        movieId: $movieId,
+        userReviewerId: $userId,
+        rating: $rating,
+        body: $body,
+        }
+      }
+    ) {
+      clientMutationId
+    }
+  }
       ''';
 }
