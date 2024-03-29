@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 
 class MovieReviewEntity extends Equatable {
   final String id;
@@ -43,5 +44,21 @@ class MovieReviewEntity extends Equatable {
         '\tint: $int,\n'
         '\tbody: $body,\n'
         '}';
+  }
+
+  factory MovieReviewEntity.fake() {
+    return MovieReviewEntity(
+      id: faker.randomGenerator.string(10),
+      title: faker.randomGenerator.string(10),
+      body: faker.randomGenerator.string(70),
+      count: faker.randomGenerator.integer(1),
+    );
+  }
+
+  static List<MovieReviewEntity> fakeList(int length) {
+    return List<MovieReviewEntity>.generate(
+      length,
+      (index) => MovieReviewEntity.fake(),
+    );
   }
 }

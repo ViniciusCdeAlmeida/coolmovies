@@ -1,10 +1,11 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 
-class MovieReviewEntity extends Equatable {
+class UserEntity extends Equatable {
   final String id;
   final String name;
 
-  const MovieReviewEntity({
+  const UserEntity({
     required this.id,
     required this.name,
   });
@@ -15,11 +16,11 @@ class MovieReviewEntity extends Equatable {
         name,
       ];
 
-  MovieReviewEntity copyWith({
+  UserEntity copyWith({
     String? id,
     String? name,
   }) {
-    return MovieReviewEntity(
+    return UserEntity(
       id: id ?? this.id,
       name: name ?? this.name,
     );
@@ -31,5 +32,19 @@ class MovieReviewEntity extends Equatable {
         '\tid: $id,\n'
         '\tname: $name,\n'
         '}';
+  }
+
+  factory UserEntity.fake() {
+    return UserEntity(
+      id: faker.randomGenerator.string(10),
+      name: faker.person.name(),
+    );
+  }
+
+  static List<UserEntity> fakeList(int length) {
+    return List<UserEntity>.generate(
+      length,
+      (index) => UserEntity.fake(),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:faker/faker.dart';
 
 class MovieListEntity extends Equatable {
   final String id;
@@ -37,5 +38,20 @@ class MovieListEntity extends Equatable {
         '\timage: $image,\n'
         '\ttitle: $title,\n'
         '}';
+  }
+
+  factory MovieListEntity.fake() {
+    return MovieListEntity(
+      id: faker.randomGenerator.string(10),
+      title: faker.randomGenerator.string(10),
+      image: faker.image.image(),
+    );
+  }
+
+  static List<MovieListEntity> fakeList(int length) {
+    return List<MovieListEntity>.generate(
+      length,
+      (index) => MovieListEntity.fake(),
+    );
   }
 }
