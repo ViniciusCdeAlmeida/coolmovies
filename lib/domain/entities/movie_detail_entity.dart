@@ -1,5 +1,5 @@
-import 'package:coolmovies/domain/entities/movie_list_entity.dart';
-import 'package:coolmovies/domain/entities/movie_review_entity.dart';
+import 'movie_list_entity.dart';
+import 'movie_review_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class MovieDetailEntity extends MovieListEntity implements EquatableMixin {

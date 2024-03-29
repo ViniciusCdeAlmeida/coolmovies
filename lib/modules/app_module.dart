@@ -1,5 +1,5 @@
-import 'package:coolmovies/external/proxies/api_proxy.dart';
-import 'package:coolmovies/modules/movies/movies_module.dart';
+import '../external/proxies/api_proxy.dart';
+import 'movies/movies_module.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

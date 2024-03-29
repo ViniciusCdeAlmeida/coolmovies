@@ -1,4 +1,4 @@
-abstract class IMovieExternalDatasource {
+abstract class IMovieRepository {
   Future getMovies({
     int page = 1,
     String search = '',

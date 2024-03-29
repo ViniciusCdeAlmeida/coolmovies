@@ -2,20 +2,21 @@ class MovieQueries {
   static String getMovies() => '''
       ''';
 
-  static String getMovieDetails({
-    required int id,
-  }) =>
-      '''
+  static String getUsers() => '''
       ''';
 
-  static String deleteMovieReviews({
-    required int id,
+  static String getMovieDetails({
+    required String id,
   }) =>
       '''
       ''';
 
   static String addMovieReviews({
-    required int id,
+    required String title,
+    required String userId,
+    required String movieId,
+    int rating = 1,
+    String body = '',
   }) =>
       '''
       ''';

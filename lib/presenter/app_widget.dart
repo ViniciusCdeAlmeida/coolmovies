@@ -15,7 +15,6 @@ class _AppWidgetState extends State<AppWidget> {
       debugShowCheckedModeBanner: false,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
-      supportedLocales: const [Locale('pt', 'BR')],
     );
   }
 }
