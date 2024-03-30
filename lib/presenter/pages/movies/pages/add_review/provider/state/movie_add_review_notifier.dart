@@ -36,7 +36,7 @@ class MovieAddReviewNotifier extends StateNotifier<AppState<MovieReviewEntity>> 
         rating: rating,
         userId: '5f1e6707-7c3a-4acd-b11f-fd96096abd5a',
       );
-      _movieDetailNotifier.state.data!.movieReviews.add(movieReview);
+      _movieDetailNotifier.addNewReview(movieReview);
       await Future.delayed(const Duration(seconds: 1));
       state = AppState.success(movieReview);
       Modular.to.pop();

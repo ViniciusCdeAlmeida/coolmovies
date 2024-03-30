@@ -22,6 +22,7 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(movieDetailNotifierProvider(widget.movieId));
+
     return Scaffold(
       floatingActionButton: state.maybeWhen(
         success: (data) => FloatingActionButton(
