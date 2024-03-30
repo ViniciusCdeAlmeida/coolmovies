@@ -1,10 +1,11 @@
+import 'package:equatable/equatable.dart';
+
 import 'movie_list_entity.dart';
 import 'movie_review_entity.dart';
-import 'package:equatable/equatable.dart';
 
 class MovieDetailEntity extends MovieListEntity implements EquatableMixin {
   final String releaseDate;
-  final List<MovieReviewEntity?> movieReviews;
+  final List<MovieReviewEntity> movieReviews;
 
   const MovieDetailEntity({
     required this.releaseDate,
@@ -28,7 +29,7 @@ class MovieDetailEntity extends MovieListEntity implements EquatableMixin {
     String? id,
     String? image,
     String? title,
-    List<MovieReviewEntity?>? movieReviews,
+    List<MovieReviewEntity>? movieReviews,
     String? releaseDate,
   }) {
     return MovieDetailEntity(

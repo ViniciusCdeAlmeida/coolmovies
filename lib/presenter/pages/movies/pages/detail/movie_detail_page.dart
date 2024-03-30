@@ -42,26 +42,57 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                   ),
                 ],
               ),
-              success: (movie) => SizedBox(
-                child: Card(
-                  elevation: 7,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  margin: const EdgeInsets.all(10),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          movie.title,
-                          textAlign: TextAlign.justify,
-                        ),
-                      ],
+              success: (movie) => ListView(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 25,
+                  horizontal: 15,
+                ),
+                children: [
+                  const Text(
+                    'Reviews',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xFF063971),
                     ),
                   ),
-                ),
+                  ...movie.movieReviews.map(
+                    (e) => Card(
+                      elevation: 7,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              e.title,
+                              textAlign: TextAlign.justify,
+                            ),
+                            const SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              e.body,
+                              textAlign: TextAlign.justify,
+                            ),
+                            Wrap(
+                              children: [
+                                const Text('Rating: '),
+                                ...List.generate(
+                                  e.count,
+                                  (index) => const Icon(Icons.star),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               error: (exception) => const Center(
                 child: Text('That\'s an error'),

@@ -32,6 +32,18 @@ class MovieQueries {
       imgUrl
       releaseDate
       title
+      movieReviewsByMovieId {
+        nodes {
+          id
+          body
+          rating
+          title
+          userByUserReviewerId {
+            name
+            id
+          }
+        }
+      }
     }
   }
        ''';

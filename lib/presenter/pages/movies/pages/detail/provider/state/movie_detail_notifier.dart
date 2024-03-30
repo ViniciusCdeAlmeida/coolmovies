@@ -21,10 +21,17 @@ class MovieDetailNotifier extends StateNotifier<AppState<MovieDetailEntity>> {
     try {
       state = const AppState.loading();
       final movieDetails = await _getMovieDetailsUsecase(id: movieID);
-      // await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 5));
       state = AppState.success(movieDetails);
     } on Exception catch (e) {
       state = AppState.error(e);
+    }
+  }
+
+  @override
+  void dispose() {
+    if (!mounted) {
+      super.dispose();
     }
   }
 }
