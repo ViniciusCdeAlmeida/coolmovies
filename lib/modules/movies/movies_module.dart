@@ -1,10 +1,7 @@
-import '../../domain/repositories/movie_repository.dart';
-import '../../external/datasources/movie_external_datasource.dart';
-import '../../infra/datasources/movie_external_datasource.dart';
-import '../../infra/repositories/movie_repository.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
 import '../../presenter/pages/movies/pages/detail/movie_detail_page.dart';
 import '../../presenter/pages/movies/pages/list/page/movies_list_page.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class MoviesModule extends Module {
   @override
@@ -15,7 +12,10 @@ class MoviesModule extends Module {
         ),
         ChildRoute(
           '/details/',
-          child: (context, args) => const MovieDetailPage(),
+          child: (context, args) => MovieDetailPage(
+            movieId: args.data['movieId'],
+            title: args.data['title'],
+          ),
         ),
       ];
 }

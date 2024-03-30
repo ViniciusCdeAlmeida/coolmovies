@@ -1,4 +1,5 @@
-import 'package:coolmovies/domain/entities/movie_list_entity.dart';
+import '../../domain/entities/movie_detail_entity.dart';
+import '../../domain/entities/movie_list_entity.dart';
 
 import '../../domain/repositories/movie_repository.dart';
 import '../datasources/movie_external_datasource.dart';
@@ -27,7 +28,7 @@ class MovieRepository implements IMovieRepository {
   }
 
   @override
-  Future getMovie({
+  Future<MovieDetailEntity> getMovie({
     required String id,
   }) async {
     return await _movieExternalDatasource.getMovie(

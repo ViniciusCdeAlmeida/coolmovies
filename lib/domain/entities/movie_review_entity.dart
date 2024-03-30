@@ -1,17 +1,21 @@
 import 'package:equatable/equatable.dart';
 import 'package:faker/faker.dart';
 
+import 'user_entity.dart';
+
 class MovieReviewEntity extends Equatable {
   final String id;
   final String title;
   final String body;
   final int count;
+  final UserEntity user;
 
   const MovieReviewEntity({
     required this.id,
     required this.title,
     required this.body,
     required this.count,
+    required this.user,
   });
 
   @override
@@ -27,12 +31,14 @@ class MovieReviewEntity extends Equatable {
     String? title,
     String? body,
     int? count,
+    UserEntity? user,
   }) {
     return MovieReviewEntity(
       id: id ?? this.id,
       body: body ?? this.body,
       title: title ?? this.title,
       count: count ?? this.count,
+      user: user ?? this.user,
     );
   }
 
@@ -43,6 +49,7 @@ class MovieReviewEntity extends Equatable {
         '\tcount: $count,\n'
         '\tint: $int,\n'
         '\tbody: $body,\n'
+        '\tuser: $user,\n'
         '}';
   }
 
@@ -52,6 +59,7 @@ class MovieReviewEntity extends Equatable {
       title: faker.randomGenerator.string(10),
       body: faker.randomGenerator.string(70),
       count: faker.randomGenerator.integer(1),
+      user: UserEntity.fake(),
     );
   }
 

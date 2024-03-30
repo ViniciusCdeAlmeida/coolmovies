@@ -1,4 +1,5 @@
-import 'package:coolmovies/domain/entities/movie_list_entity.dart';
+import '../entities/movie_detail_entity.dart';
+import '../entities/movie_list_entity.dart';
 
 abstract class IMovieRepository {
   Future<List<MovieListEntity>> getMovies({
@@ -8,7 +9,7 @@ abstract class IMovieRepository {
 
   Future getUsers();
 
-  Future getMovie({
+  Future<MovieDetailEntity> getMovie({
     required String id,
   });
 

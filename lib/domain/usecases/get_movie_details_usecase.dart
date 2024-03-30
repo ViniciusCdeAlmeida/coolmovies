@@ -1,3 +1,4 @@
+import '../entities/movie_detail_entity.dart';
 import '../repositories/movie_repository.dart';
 
 class GetMovieDetailsUsecase {
@@ -7,7 +8,7 @@ class GetMovieDetailsUsecase {
     required IMovieRepository movieRepository,
   }) : _movieRepository = movieRepository;
 
-  Future call({
+  Future<MovieDetailEntity> call({
     required String id,
   }) async {
     return await _movieRepository.getMovie(
