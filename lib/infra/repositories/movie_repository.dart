@@ -3,9 +3,11 @@ import '../datasources/movie_external_datasource.dart';
 
 class MovieRepository implements IMovieRepository {
   final IMovieExternalDatasource _movieExternalDatasource;
-  const MovieRepository({
+
+  MovieRepository({
     required IMovieExternalDatasource movieExternalDatasource,
   }) : _movieExternalDatasource = movieExternalDatasource;
+
   @override
   Future getMovies({
     int page = 1,
