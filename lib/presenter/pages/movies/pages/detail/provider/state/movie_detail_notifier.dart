@@ -6,21 +6,21 @@ import '../../../../../../state/state.dart';
 
 class MovieDetailNotifier extends StateNotifier<AppState<MovieDetailEntity>> {
   final GetMovieDetailsUsecase _getMovieDetailsUsecase;
-  final String movieID;
+  final String movieId;
 
   MovieDetailNotifier(
     this._getMovieDetailsUsecase,
-    this.movieID,
+    this.movieId,
   ) : super(
           const AppState.init(),
         ) {
-    getMovieDetails(movieID);
+    getMovieDetails(movieId);
   }
 
-  Future<void> getMovieDetails(String movieID) async {
+  Future<void> getMovieDetails(String movieId) async {
     try {
       state = const AppState.loading();
-      final movieDetails = await _getMovieDetailsUsecase(id: movieID);
+      final movieDetails = await _getMovieDetailsUsecase(id: movieId);
       await Future.delayed(const Duration(seconds: 5));
       state = AppState.success(movieDetails);
     } on Exception catch (e) {

@@ -1,3 +1,5 @@
+import 'package:coolmovies/domain/entities/movie_review_entity.dart';
+
 import '../../domain/entities/movie_detail_entity.dart';
 import '../../domain/entities/movie_list_entity.dart';
 
@@ -37,7 +39,7 @@ class MovieRepository implements IMovieRepository {
   }
 
   @override
-  Future addMovieReview({
+  Future<MovieReviewEntity> addMovieReview({
     required String title,
     required String userId,
     required String movieId,

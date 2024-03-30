@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../domain/entities/movie_detail_entity.dart';
@@ -21,7 +20,8 @@ class MovieAddReviewPage extends ConsumerStatefulWidget {
 class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(movieAddReviewNotifierProvider(widget.movie).notifier);
+    final state = ref.read(movieAddReviewNotifierProvider(widget.movie).notifier);
+    final state2 = ref.watch(movieAddReviewNotifierProvider(widget.movie));
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.movie.title),
@@ -89,11 +89,18 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                   onPressed: () {
                     final currentState = state.formKey.currentState;
                     if (currentState != null && currentState.validate()) {
-                      // state.addReviewMovie(movie.);
-                      Modular.to.pop();
+                      state.addReviewMovie(widget.movie.id);
                     }
                   },
-                  child: const Text('Save'),
+                  child: state2.maybeWhen(
+                    loading: () => const SizedBox(
+                      height: 50.0,
+                      child: Center(
+                        child: CircularProgressIndicator(color: Colors.black),
+                      ),
+                    ),
+                    orElse: () => const Text('Save'),
+                  ),
                 ),
               ),
             ),

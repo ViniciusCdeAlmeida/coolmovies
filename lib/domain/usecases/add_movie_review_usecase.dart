@@ -1,3 +1,5 @@
+import 'package:coolmovies/domain/entities/movie_review_entity.dart';
+
 import '../repositories/movie_repository.dart';
 
 class AddMovieReviewUsecase {
@@ -7,7 +9,7 @@ class AddMovieReviewUsecase {
     required IMovieRepository movieRepository,
   }) : _movieRepository = movieRepository;
 
-  Future call({
+  Future<MovieReviewEntity> call({
     required String title,
     required String userId,
     required String movieId,

@@ -57,7 +57,7 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                   ),
                 ],
               ),
-              success: (movie) => ListView(
+              success: (movies) => ListView(
                 padding: const EdgeInsets.symmetric(
                   vertical: 25,
                   horizontal: 15,
@@ -71,8 +71,8 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                       color: Color(0xFF063971),
                     ),
                   ),
-                  ...movie.movieReviews.map(
-                    (e) => Card(
+                  ...movies.movieReviews.map(
+                    (movie) => Card(
                       elevation: 7,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -83,21 +83,21 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              e.title,
+                              movie.title,
                               textAlign: TextAlign.justify,
                             ),
                             const SizedBox(
                               height: 5.0,
                             ),
                             Text(
-                              e.body,
+                              movie.body,
                               textAlign: TextAlign.justify,
                             ),
                             Wrap(
                               children: [
                                 const Text('Rating: '),
                                 ...List.generate(
-                                  e.count,
+                                  movie.count,
                                   (index) => const Icon(Icons.star),
                                 ),
                               ],
