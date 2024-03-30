@@ -1,8 +1,10 @@
-import 'package:coolmovies/domain/entities/movie_list_entity.dart';
-import 'package:coolmovies/external/mappers/movie_list_mapper.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+import '../../domain/entities/movie_detail_entity.dart';
+import '../../domain/entities/movie_list_entity.dart';
 import '../../infra/datasources/movie_external_datasource.dart';
+import '../mappers/movie_details_mapper.dart';
+import '../mappers/movie_list_mapper.dart';
 import '../proxies/api_proxy.dart';
 import '../queries/movie_queries.dart';
 
@@ -45,7 +47,7 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
   }
 
   @override
-  Future getMovie({
+  Future<MovieDetailEntity> getMovie({
     required String id,
   }) async {
     final response = await _apiProxy.query(
@@ -57,8 +59,7 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
         ),
       ),
     );
-
-    return response;
+    return MovieDetailMapper.fromMap(response.data!['movieById']);
   }
 
   @override

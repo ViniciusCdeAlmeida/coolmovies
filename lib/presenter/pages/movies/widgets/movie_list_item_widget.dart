@@ -1,7 +1,7 @@
-import 'dart:ui';
-
-import 'package:coolmovies/domain/entities/movie_list_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../../domain/entities/movie_list_entity.dart';
 
 class MovieListItemWidget extends StatelessWidget {
   final MovieListEntity movie;
@@ -47,10 +47,13 @@ class MovieListItemWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        // Navigator.of(context).pushNamed(
-        //   CursoDetalheScreen.routeName,
-        //   arguments: curso.id,
-        // );
+        Modular.to.pushNamed(
+          '/details/',
+          arguments: {
+            'movieId': movie.id,
+            'title': movie.title,
+          },
+        );
       },
     );
   }

@@ -1,5 +1,5 @@
 class MovieQueries {
-  static String getMovies() => r"""
+  static String getMovies() => '''
   query AllMovies {
     allMovies {
       nodes {
@@ -9,7 +9,7 @@ class MovieQueries {
       }
     }
   }
-      """;
+      ''';
 
   static String getUsers() => '''
   query {
@@ -27,14 +27,14 @@ class MovieQueries {
   }) =>
       '''
   query {
-    movieById(id: $id) {
-      imgUrl
+    movieById(id: "$id") {
       id
+      imgUrl
       releaseDate
       title
     }
   }
-      ''';
+       ''';
 
   static String addMovieReviews({
     required String title,

@@ -1,4 +1,4 @@
-import 'package:coolmovies/presenter/pages/movies/pages/list/provider/movie_provider.dart';
+import 'package:coolmovies/presenter/pages/movies/pages/list/provider/movie_list_provider.dart';
 import 'package:coolmovies/presenter/pages/movies/widgets/movie_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +15,7 @@ class MoviesListPage extends ConsumerStatefulWidget {
 class _MoviesListPageState extends ConsumerState<MoviesListPage> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(movieNotifierProvider);
+    final state = ref.watch(movieListNotifierProvider);
     return Scaffold(
       body: CustomScrollView(
         physics: const NeverScrollableScrollPhysics(),
@@ -39,7 +39,7 @@ class _MoviesListPageState extends ConsumerState<MoviesListPage> {
               ),
               success: (data) => ListView.builder(
                 itemCount: data.length,
-                itemBuilder: (context, index) => MovieListItemWidget(movie: data[index]),
+                itemBuilder: (_, index) => MovieListItemWidget(movie: data[index]),
               ),
               error: (exception) => const Center(
                 child: Text('That\'s an error'),
