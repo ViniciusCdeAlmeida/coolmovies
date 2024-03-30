@@ -1,3 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'modules/app_module.dart';
 import 'presenter/app_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,11 @@ Future<void> main() async {
   await dotenv.load(fileName: '.env');
 
   runApp(
-    ModularApp(
-      module: AppModule(),
-      child: const AppWidget(),
+    ProviderScope(
+      child: ModularApp(
+        module: AppModule(),
+        child: const AppWidget(),
+      ),
     ),
   );
 }

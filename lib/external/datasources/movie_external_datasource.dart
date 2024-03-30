@@ -1,3 +1,5 @@
+import 'package:coolmovies/domain/entities/movie_list_entity.dart';
+import 'package:coolmovies/external/mappers/movie_list_mapper.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../infra/datasources/movie_external_datasource.dart';
@@ -12,7 +14,7 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
   }) : _apiProxy = apiProxy;
 
   @override
-  Future getMovies({
+  Future<List<MovieListEntity>> getMovies({
     int page = 1,
     String search = '',
   }) async {
@@ -24,7 +26,9 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
       ),
     );
 
-    return response;
+    return (response.data!['allMovies']['nodes'] as Iterable).map((movie) {
+      return MovieListMapper.fromMap(movie);
+    }).toList();
   }
 
   @override

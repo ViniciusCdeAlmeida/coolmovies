@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:coolmovies/external/datasources/movie_external_datasource.dart';
 
-final movieExternalProvider = Provider<IMovieExternalDatasource>((ref) {
-  final movieExternal = MovieExternalDatasource(apiProxy: ref.read(apiProxyProvider));
-
-  return movieExternal;
-});
+final movieExternalProvider = Provider<IMovieExternalDatasource>(
+  (ref) {
+    return MovieExternalDatasource(apiProxy: ref.read(apiProxyProvider));
+  },
+);

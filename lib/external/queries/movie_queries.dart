@@ -1,14 +1,15 @@
 class MovieQueries {
-  static String getMovies() => '''
-  query {
+  static String getMovies() => r"""
+  query AllMovies {
     allMovies {
       nodes {
         id
         title
+        imgUrl
       }
     }
   }
-      ''';
+      """;
 
   static String getUsers() => '''
   query {

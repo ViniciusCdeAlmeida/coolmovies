@@ -4,22 +4,25 @@ import '../../../../../../../domain/entities/movie_list_entity.dart';
 import '../../../../../../../domain/usecases/get_movie_list_usecase.dart';
 import '../../../../../../state/state.dart';
 
-class MovieListNotifier extends StateNotifier<State<MovieListEntity>> {
+class MovieListNotifier extends StateNotifier<AppState<List<MovieListEntity>>> {
   final GetMovieListUsecase _getMovieListUsecase;
 
   MovieListNotifier(
     this._getMovieListUsecase,
   ) : super(
-          const State.init(),
-        );
+          const AppState.init(),
+        ) {
+    getMovieList();
+  }
 
-  Future getMovieList() async {
+  Future<void> getMovieList() async {
     try {
-      state = const State.loading();
+      state = const AppState.loading();
       final movieList = await _getMovieListUsecase();
-      state = State.success(movieList);
+      // await Future.delayed(const Duration(seconds: 10));
+      state = AppState.success(movieList);
     } on Exception catch (e) {
-      state = State.error(e);
+      state = AppState.error(e);
     }
   }
 }

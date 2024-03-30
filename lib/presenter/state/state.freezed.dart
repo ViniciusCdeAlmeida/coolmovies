@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$State<T> {
+mixin _$AppState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
@@ -69,15 +69,16 @@ mixin _$State<T> {
 }
 
 /// @nodoc
-abstract class $StateCopyWith<T, $Res> {
-  factory $StateCopyWith(State<T> value, $Res Function(State<T>) then) =
-      _$StateCopyWithImpl<T, $Res, State<T>>;
+abstract class $AppStateCopyWith<T, $Res> {
+  factory $AppStateCopyWith(
+          AppState<T> value, $Res Function(AppState<T>) then) =
+      _$AppStateCopyWithImpl<T, $Res, AppState<T>>;
 }
 
 /// @nodoc
-class _$StateCopyWithImpl<T, $Res, $Val extends State<T>>
-    implements $StateCopyWith<T, $Res> {
-  _$StateCopyWithImpl(this._value, this._then);
+class _$AppStateCopyWithImpl<T, $Res, $Val extends AppState<T>>
+    implements $AppStateCopyWith<T, $Res> {
+  _$AppStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -94,7 +95,7 @@ abstract class _$$initImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$initImplCopyWithImpl<T, $Res>
-    extends _$StateCopyWithImpl<T, $Res, _$initImpl<T>>
+    extends _$AppStateCopyWithImpl<T, $Res, _$initImpl<T>>
     implements _$$initImplCopyWith<T, $Res> {
   __$$initImplCopyWithImpl(
       _$initImpl<T> _value, $Res Function(_$initImpl<T>) _then)
@@ -108,7 +109,7 @@ class _$initImpl<T> extends _init<T> {
 
   @override
   String toString() {
-    return 'State<$T>.init()';
+    return 'AppState<$T>.init()';
   }
 
   @override
@@ -195,7 +196,7 @@ class _$initImpl<T> extends _init<T> {
   }
 }
 
-abstract class _init<T> extends State<T> {
+abstract class _init<T> extends AppState<T> {
   const factory _init() = _$initImpl<T>;
   const _init._() : super._();
 }
@@ -209,7 +210,7 @@ abstract class _$$loadingImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$loadingImplCopyWithImpl<T, $Res>
-    extends _$StateCopyWithImpl<T, $Res, _$loadingImpl<T>>
+    extends _$AppStateCopyWithImpl<T, $Res, _$loadingImpl<T>>
     implements _$$loadingImplCopyWith<T, $Res> {
   __$$loadingImplCopyWithImpl(
       _$loadingImpl<T> _value, $Res Function(_$loadingImpl<T>) _then)
@@ -223,7 +224,7 @@ class _$loadingImpl<T> extends _loading<T> {
 
   @override
   String toString() {
-    return 'State<$T>.loading()';
+    return 'AppState<$T>.loading()';
   }
 
   @override
@@ -310,7 +311,7 @@ class _$loadingImpl<T> extends _loading<T> {
   }
 }
 
-abstract class _loading<T> extends State<T> {
+abstract class _loading<T> extends AppState<T> {
   const factory _loading() = _$loadingImpl<T>;
   const _loading._() : super._();
 }
@@ -326,7 +327,7 @@ abstract class _$$successImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$successImplCopyWithImpl<T, $Res>
-    extends _$StateCopyWithImpl<T, $Res, _$successImpl<T>>
+    extends _$AppStateCopyWithImpl<T, $Res, _$successImpl<T>>
     implements _$$successImplCopyWith<T, $Res> {
   __$$successImplCopyWithImpl(
       _$successImpl<T> _value, $Res Function(_$successImpl<T>) _then)
@@ -356,7 +357,7 @@ class _$successImpl<T> extends _success<T> {
 
   @override
   String toString() {
-    return 'State<$T>.success(data: $data)';
+    return 'AppState<$T>.success(data: $data)';
   }
 
   @override
@@ -452,7 +453,7 @@ class _$successImpl<T> extends _success<T> {
   }
 }
 
-abstract class _success<T> extends State<T> {
+abstract class _success<T> extends AppState<T> {
   const factory _success(final T data) = _$successImpl<T>;
   const _success._() : super._();
 
@@ -473,7 +474,7 @@ abstract class _$$errorImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$errorImplCopyWithImpl<T, $Res>
-    extends _$StateCopyWithImpl<T, $Res, _$errorImpl<T>>
+    extends _$AppStateCopyWithImpl<T, $Res, _$errorImpl<T>>
     implements _$$errorImplCopyWith<T, $Res> {
   __$$errorImplCopyWithImpl(
       _$errorImpl<T> _value, $Res Function(_$errorImpl<T>) _then)
@@ -503,7 +504,7 @@ class _$errorImpl<T> extends _error<T> {
 
   @override
   String toString() {
-    return 'State<$T>.error(exception: $exception)';
+    return 'AppState<$T>.error(exception: $exception)';
   }
 
   @override
@@ -599,7 +600,7 @@ class _$errorImpl<T> extends _error<T> {
   }
 }
 
-abstract class _error<T> extends State<T> {
+abstract class _error<T> extends AppState<T> {
   const factory _error(final Exception exception) = _$errorImpl<T>;
   const _error._() : super._();
 

@@ -1,3 +1,5 @@
+import 'package:coolmovies/domain/entities/movie_list_entity.dart';
+
 import '../repositories/movie_repository.dart';
 
 class GetMovieListUsecase {
@@ -7,7 +9,7 @@ class GetMovieListUsecase {
     required IMovieRepository movieRepository,
   }) : _movieRepository = movieRepository;
 
-  Future call({
+  Future<List<MovieListEntity>> call({
     int page = 1,
     String search = '',
   }) async {
