@@ -88,4 +88,19 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
 
     return MovieReviewMapper.fromMap(response.data!['createMovieReview']['movieReview']);
   }
+
+  @override
+  Future<void> removeMovieReview({
+    required String reviewId,
+  }) async {
+    await _apiProxy.mutate(
+      MutationOptions(
+        document: gql(
+          MovieQueries.removeMovieReview(
+            reviewId: reviewId,
+          ),
+        ),
+      ),
+    );
+  }
 }

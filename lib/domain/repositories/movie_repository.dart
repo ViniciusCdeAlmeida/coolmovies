@@ -22,4 +22,8 @@ abstract class IMovieRepository {
     int rating = 1,
     String body = '',
   });
+
+  Future<void> removeMovieReview({
+    required String reviewId,
+  });
 }

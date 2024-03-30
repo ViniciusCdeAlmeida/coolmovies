@@ -7,5 +7,9 @@ import 'state/movie_detail_notifier.dart';
 
 final movieDetailNotifierProvider =
     StateNotifierProvider.family.autoDispose<MovieDetailNotifier, AppState<MovieDetailEntity>, String>((ref, movieId) {
-  return MovieDetailNotifier(ref.watch(getMovieDetailsUsecaseProvider), movieId);
+  return MovieDetailNotifier(
+    ref.watch(getMovieDetailsUsecaseProvider),
+    ref.watch(removeMovieReviewUsecaseProvider),
+    movieId,
+  );
 });

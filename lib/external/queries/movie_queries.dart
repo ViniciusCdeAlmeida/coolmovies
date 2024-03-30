@@ -83,4 +83,19 @@ class MovieQueries {
     }
   }
       ''';
+
+  static String removeMovieReview({
+    required String reviewId,
+  }) =>
+      '''
+  mutation {
+  deleteMovieReviewById(
+    input: {
+      id: "$reviewId"
+    }
+    ) {
+    deletedMovieReviewId
+  }
+}
+      ''';
 }

@@ -22,6 +22,7 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(movieDetailNotifierProvider(widget.movieId));
+    final notifier = ref.watch(movieDetailNotifierProvider(widget.movieId).notifier);
 
     return Scaffold(
       floatingActionButton: state.maybeWhen(
@@ -103,6 +104,25 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                                 ),
                               ],
                             ),
+                            if (notifier.checkReview(movie))
+                              Column(
+                                children: [
+                                  const Divider(),
+                                  Center(
+                                    child: InkWell(
+                                      onTap: () {
+                                        notifier.deleteMovieReview(movie.id);
+                                      },
+                                      child: const Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('Delete Review'),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                           ],
                         ),
                       ),

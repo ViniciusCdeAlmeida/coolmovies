@@ -54,4 +54,13 @@ class MovieRepository implements IMovieRepository {
       body: body,
     );
   }
+
+  @override
+  Future<void> removeMovieReview({
+    required String reviewId,
+  }) async {
+    return await _movieExternalDatasource.removeMovieReview(
+      reviewId: reviewId,
+    );
+  }
 }
