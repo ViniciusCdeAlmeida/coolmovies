@@ -1,3 +1,5 @@
+import 'package:coolmovies/domain/entities/movie_review_entity.dart';
+import 'package:coolmovies/external/mappers/movie_review_mapper.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../domain/entities/movie_detail_entity.dart';
@@ -63,15 +65,15 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
   }
 
   @override
-  Future addMovieReview({
+  Future<MovieReviewEntity> addMovieReview({
     required String title,
     required String userId,
     required String movieId,
     int rating = 1,
     String body = '',
   }) async {
-    final response = await _apiProxy.query(
-      QueryOptions(
+    final response = await _apiProxy.mutate(
+      MutationOptions(
         document: gql(
           MovieQueries.addMovieReviews(
             title: title,
@@ -84,6 +86,6 @@ class MovieExternalDatasource implements IMovieExternalDatasource {
       ),
     );
 
-    return response;
+    return MovieReviewMapper.fromMap(response.data!['createMovieReview']['movieReview']);
   }
 }

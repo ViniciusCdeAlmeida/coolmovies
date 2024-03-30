@@ -52,7 +52,7 @@ class MovieQueries {
     required String title,
     required String userId,
     required String movieId,
-    int rating = 1,
+    int rating = 0,
     String body = '',
   }) =>
       '''
@@ -60,15 +60,26 @@ class MovieQueries {
     createMovieReview(
       input: {
         movieReview: {
-        title: $title,
-        movieId: $movieId,
-        userReviewerId: $userId,
+        title: "$title",
+        movieId: "$movieId",
+        userReviewerId: "$userId",
         rating: $rating,
-        body: $body,
+        body: "$body",
         }
       }
     ) {
-      clientMutationId
+      movieReview {
+        title
+        rating
+        nodeId
+        movieId
+        id
+        body
+        userByUserReviewerId {
+          name
+          id
+        }
+      }
     }
   }
       ''';

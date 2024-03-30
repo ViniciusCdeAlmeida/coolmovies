@@ -19,7 +19,7 @@ class MovieListNotifier extends StateNotifier<AppState<List<MovieListEntity>>> {
     try {
       state = const AppState.loading();
       final movieList = await _getMovieListUsecase();
-      // await Future.delayed(const Duration(seconds: 10));
+      await Future.delayed(const Duration(seconds: 5));
       state = AppState.success(movieList);
     } on Exception catch (e) {
       state = AppState.error(e);

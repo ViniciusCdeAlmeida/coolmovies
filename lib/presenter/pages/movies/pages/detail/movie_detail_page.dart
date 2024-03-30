@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'provider/movie_detail_provider.dart';
@@ -21,7 +22,22 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(movieDetailNotifierProvider(widget.movieId));
+
     return Scaffold(
+      floatingActionButton: state.maybeWhen(
+        success: (data) => FloatingActionButton(
+          onPressed: () {
+            Modular.to.pushNamed(
+              '/add-review',
+              arguments: {
+                'movie': data,
+              },
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
+        orElse: () => null,
+      ),
       body: CustomScrollView(
         physics: const NeverScrollableScrollPhysics(),
         slivers: [
@@ -42,7 +58,7 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                   ),
                 ],
               ),
-              success: (movie) => ListView(
+              success: (movies) => ListView(
                 padding: const EdgeInsets.symmetric(
                   vertical: 25,
                   horizontal: 15,
@@ -56,8 +72,8 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                       color: Color(0xFF063971),
                     ),
                   ),
-                  ...movie.movieReviews.map(
-                    (e) => Card(
+                  ...movies.movieReviews.map(
+                    (movie) => Card(
                       elevation: 7,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
@@ -68,21 +84,21 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              e.title,
+                              movie.title,
                               textAlign: TextAlign.justify,
                             ),
                             const SizedBox(
                               height: 5.0,
                             ),
                             Text(
-                              e.body,
+                              movie.body,
                               textAlign: TextAlign.justify,
                             ),
                             Wrap(
                               children: [
                                 const Text('Rating: '),
                                 ...List.generate(
-                                  e.count,
+                                  movie.count,
                                   (index) => const Icon(Icons.star),
                                 ),
                               ],
