@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'provider/movie_detail_provider.dart';
@@ -22,6 +23,20 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
   Widget build(BuildContext context) {
     final state = ref.watch(movieDetailNotifierProvider(widget.movieId));
     return Scaffold(
+      floatingActionButton: state.maybeWhen(
+        success: (data) => FloatingActionButton(
+          onPressed: () {
+            Modular.to.pushNamed(
+              '/add-review',
+              arguments: {
+                'movie': data,
+              },
+            );
+          },
+          child: const Icon(Icons.add),
+        ),
+        orElse: () => null,
+      ),
       body: CustomScrollView(
         physics: const NeverScrollableScrollPhysics(),
         slivers: [
