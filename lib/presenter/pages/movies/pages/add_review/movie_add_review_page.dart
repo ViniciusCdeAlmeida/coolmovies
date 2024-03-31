@@ -20,8 +20,8 @@ class MovieAddReviewPage extends ConsumerStatefulWidget {
 class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.read(movieAddReviewNotifierProvider(widget.movie).notifier);
-    final state2 = ref.watch(movieAddReviewNotifierProvider(widget.movie));
+    final notifier = ref.read(movieAddReviewNotifierProvider(widget.movie).notifier);
+    final state = ref.watch(movieAddReviewNotifierProvider(widget.movie));
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.movie.title),
@@ -37,13 +37,13 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Form(
-              key: state.formKey,
+              key: notifier.formKey,
               child: Column(
                 children: [
                   TextFormField(
-                    initialValue: state.title,
+                    initialValue: notifier.title,
                     maxLength: 20,
-                    onChanged: (value) => state.title = value,
+                    onChanged: (value) => notifier.title = value,
                     // validator: (_) => _viewModel.validateTitle(),
                     decoration: const InputDecoration(
                       icon: Icon(Icons.edit),
@@ -54,9 +54,9 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    initialValue: state.body,
+                    initialValue: notifier.body,
                     maxLength: 500,
-                    onChanged: (value) => state.body = value,
+                    onChanged: (value) => notifier.body = value,
                     maxLines: 3,
                     // validator: (_) => _viewModel.validateDescription(),
                     decoration: const InputDecoration(
@@ -67,9 +67,9 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    initialValue: state.title,
+                    initialValue: notifier.title,
                     maxLength: 2,
-                    onChanged: (value) => state.title = value,
+                    onChanged: (value) => notifier.title = value,
                     // validator: (_) => _viewModel.validateDescription(),
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
@@ -87,12 +87,12 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    final currentState = state.formKey.currentState;
+                    final currentState = notifier.formKey.currentState;
                     if (currentState != null && currentState.validate()) {
-                      state.addReviewMovie(widget.movie.id);
+                      notifier.addReviewMovie(widget.movie.id);
                     }
                   },
-                  child: state2.maybeWhen(
+                  child: state.maybeWhen(
                     loading: () => const SizedBox(
                       height: 50.0,
                       child: Center(
