@@ -12,4 +12,10 @@ class MovieDetailMapper {
           (json['movieReviewsByMovieId']['nodes'] as Iterable? ?? []).map((e) => MovieReviewMapper.fromMap(e)).toList(),
     );
   }
+
+  static MovieDetailEntity get fakeEntity => MovieDetailEntity.fake();
+
+  static List<MovieDetailEntity> fakeEntityList(int lenght) {
+    return MovieDetailEntity.fakeList(lenght);
+  }
 }

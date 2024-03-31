@@ -53,7 +53,7 @@ class MovieAddReviewNotifier extends StateNotifier<AppState<MovieReviewEntity>> 
   }
 
   String? validateRating() {
-    if (rating >= 0 && rating < 6) {
+    if (rating >= 0 && rating >= 6) {
       return 'Sorry, choose between 1 to 5';
     }
     return null;

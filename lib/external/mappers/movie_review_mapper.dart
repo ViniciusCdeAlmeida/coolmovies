@@ -11,4 +11,20 @@ class MovieReviewMapper {
       user: UserMapper.fromMap(json['userByUserReviewerId']),
     );
   }
+
+  static Map<String, dynamic> toMap(MovieReviewEntity movieReview) {
+    return {
+      'id': movieReview.id,
+      'title': movieReview.title,
+      'body': movieReview.body,
+      'rating': movieReview.count,
+      'userByUserReviewerId': UserMapper.toMap(movieReview.user),
+    };
+  }
+
+  static MovieReviewEntity get fakeEntity => MovieReviewEntity.fake();
+
+  static List<MovieReviewEntity> fakeEntityList(int lenght) {
+    return MovieReviewEntity.fakeList(lenght);
+  }
 }

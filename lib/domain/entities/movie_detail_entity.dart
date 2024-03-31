@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import 'movie_list_entity.dart';
 import 'movie_review_entity.dart';
+import 'package:faker/faker.dart';
 
 class MovieDetailEntity extends MovieListEntity implements EquatableMixin {
   final String releaseDate;
@@ -50,5 +51,22 @@ class MovieDetailEntity extends MovieListEntity implements EquatableMixin {
         '\treleaseDate: $releaseDate,\n'
         '\tmovieReviews: $movieReviews,\n'
         '}';
+  }
+
+  factory MovieDetailEntity.fake() {
+    return MovieDetailEntity(
+      id: faker.randomGenerator.integer(10).toString(),
+      title: faker.randomGenerator.fromCharSet('ABCDEFGHIJKLMONPQESTUVWXYZ', 10),
+      releaseDate: faker.date.random.toString(),
+      image: faker.image.image(),
+      movieReviews: MovieReviewEntity.fakeList(3),
+    );
+  }
+
+  static List<MovieDetailEntity> fakeList(int length) {
+    return List<MovieDetailEntity>.generate(
+      length,
+      (index) => MovieDetailEntity.fake(),
+    );
   }
 }

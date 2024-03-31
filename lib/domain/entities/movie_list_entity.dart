@@ -42,8 +42,8 @@ class MovieListEntity extends Equatable {
 
   factory MovieListEntity.fake() {
     return MovieListEntity(
-      id: faker.randomGenerator.string(10),
-      title: faker.randomGenerator.string(10),
+      id: faker.randomGenerator.integer(10).toString(),
+      title: faker.randomGenerator.fromCharSet('ABCDEFGHIJKLMONPQESTUVWXYZ', 10),
       image: faker.image.image(),
     );
   }
