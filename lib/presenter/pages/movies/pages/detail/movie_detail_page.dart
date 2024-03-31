@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import 'provider/movie_detail_provider.dart';
 
@@ -65,11 +66,27 @@ class _MovieDetailPageState extends ConsumerState<MovieDetailPage> {
                   horizontal: 15,
                 ),
                 children: [
+                  Text(
+                    'Title: ${movies.title}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xFF063971),
+                    ),
+                  ),
+                  Text(
+                    'Release Date: ${DateFormat('M/d/y').format(DateTime.parse(movies.releaseDate))}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                      color: Color(0xFF063971),
+                    ),
+                  ),
                   const Text(
                     'Reviews',
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16,
+                      fontSize: 20,
                       color: Color(0xFF063971),
                     ),
                   ),

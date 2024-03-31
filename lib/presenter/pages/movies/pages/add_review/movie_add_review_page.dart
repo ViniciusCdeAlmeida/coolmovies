@@ -44,11 +44,10 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                     initialValue: notifier.title,
                     maxLength: 20,
                     onChanged: (value) => notifier.title = value,
-                    // validator: (_) => _viewModel.validateTitle(),
+                    validator: (_) => notifier.validateTitle(),
                     decoration: const InputDecoration(
                       icon: Icon(Icons.edit),
                       labelText: 'Title',
-                      helperText: 'Required',
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -58,7 +57,6 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                     maxLength: 500,
                     onChanged: (value) => notifier.body = value,
                     maxLines: 3,
-                    // validator: (_) => _viewModel.validateDescription(),
                     decoration: const InputDecoration(
                       icon: Icon(Icons.view_headline),
                       labelText: 'Review',
@@ -69,8 +67,8 @@ class _MovieAddReviewPageState extends ConsumerState<MovieAddReviewPage> {
                   TextFormField(
                     initialValue: notifier.title,
                     maxLength: 2,
-                    onChanged: (value) => notifier.title = value,
-                    // validator: (_) => _viewModel.validateDescription(),
+                    onChanged: (value) => notifier.rating = int.parse(value),
+                    validator: (_) => notifier.validateRating(),
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
