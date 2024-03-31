@@ -55,8 +55,8 @@ class MovieDetailEntity extends MovieListEntity implements EquatableMixin {
 
   factory MovieDetailEntity.fake() {
     return MovieDetailEntity(
-      id: faker.randomGenerator.string(10),
-      title: faker.randomGenerator.string(10),
+      id: faker.randomGenerator.integer(10).toString(),
+      title: faker.randomGenerator.fromCharSet('ABCDEFGHIJKLMONPQESTUVWXYZ', 10),
       releaseDate: faker.date.random.toString(),
       image: faker.image.image(),
       movieReviews: MovieReviewEntity.fakeList(3),

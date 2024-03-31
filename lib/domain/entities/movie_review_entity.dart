@@ -55,9 +55,9 @@ class MovieReviewEntity extends Equatable {
 
   factory MovieReviewEntity.fake() {
     return MovieReviewEntity(
-      id: faker.randomGenerator.string(10),
-      title: faker.randomGenerator.string(10),
-      body: faker.randomGenerator.string(70),
+      id: faker.randomGenerator.integer(10).toString(),
+      title: faker.randomGenerator.fromCharSet('ABCDEFGHIJKLMONPQESTUVWXYZ', 10),
+      body: faker.randomGenerator.fromCharSet('ABCDEFGHIJKLMONPQESTUVWXYZ', 70),
       count: faker.randomGenerator.integer(1),
       user: UserEntity.fake(),
     );

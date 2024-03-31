@@ -36,7 +36,7 @@ class UserEntity extends Equatable {
 
   factory UserEntity.fake() {
     return UserEntity(
-      id: faker.randomGenerator.string(10),
+      id: faker.randomGenerator.integer(10).toString(),
       name: faker.person.name(),
     );
   }
