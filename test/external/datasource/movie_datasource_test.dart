@@ -17,10 +17,6 @@ void main() {
   final fakeMovieEntity = MovieDetailEntity.fake();
   final fakeMovieReviewEntity = MovieReviewEntity.fake();
 
-  // setUpAll(() {
-  //   apiProxy = MockApiProxy1();
-  //   datasource = MovieExternalDatasource(apiProxy: apiProxy);
-  // });
   group('#getMovies', () {
     test('Should return success and the data is in valid format', () async {
       when(
