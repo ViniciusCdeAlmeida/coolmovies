@@ -8,4 +8,10 @@ class MovieListMapper {
       image: json['imgUrl'],
     );
   }
+
+  static MovieListEntity get fakeEntity => MovieListEntity.fake();
+
+  static List<MovieListEntity> fakeEntityList(int lenght) {
+    return MovieListEntity.fakeList(lenght);
+  }
 }

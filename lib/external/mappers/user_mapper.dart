@@ -7,4 +7,17 @@ class UserMapper {
       name: json['name'],
     );
   }
+
+  static Map<String, dynamic> toMap(UserEntity user) {
+    return {
+      'id': user.id,
+      'name': user.name,
+    };
+  }
+
+  static UserEntity get fakeEntity => UserEntity.fake();
+
+  static List<UserEntity> fakeEntityList(int lenght) {
+    return UserEntity.fakeList(lenght);
+  }
 }
